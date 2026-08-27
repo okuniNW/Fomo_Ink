@@ -18,15 +18,40 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-body);background:var(--bg);color:var(--on-surface);line-height:1.6;padding:0 16px}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:2px dashed var(--outline-variant)}
-.logo{font-family:var(--font-head);font-weight:800;font-size:22px;color:var(--primary);display:flex;align-items:center;gap:8px}
-a.btn{background:var(--primary);color:var(--on-primary);border-radius:var(--radius);padding:12px 24px;font-weight:600;text-decoration:none;font-size:14px;transition:background-color 200ms cubic-bezier(0.22,1,0.36,1)}
-a.btn:hover{background:var(--primary-container)}
+/* ===== HEADER (custom bg + logo, sticky, blur) ===== */
+header{
+position:sticky;top:0;z-index:100;
+display:flex;justify-content:space-between;align-items:center;padding:10px 16px;
+background:
+linear-gradient(rgba(7,17,30,0.55),rgba(7,17,30,0.55)),
+url('header-bg.png') center/cover no-repeat,
+rgba(7,17,30,0.75);
+backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+border-bottom:2px dashed var(--outline-variant);
+}
+.logo{font-family:var(--font-head);font-weight:800;font-size:20px;display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-img{height:36px;width:auto}
+.logo .kraken{font-size:24px;filter:drop-shadow(0 0 6px rgba(139,92,246,0.6))}
+.logo b{background:linear-gradient(90deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;align-items:center;gap:6px}
+nav a{color:var(--on-surface-variant);text-decoration:none;font-size:14px;font-weight:600;padding:10px 14px;border-radius:var(--radius);min-height:48px;display:flex;align-items:center;transition:all 300ms cubic-bezier(0.22,1,0.36,1)}
+nav a:hover{background:var(--surface-container-high);color:var(--on-surface)}
+nav a.active{background:var(--primary);color:var(--on-primary)}
+.btn{background:var(--primary);color:var(--on-primary);border-radius:var(--radius);padding:12px 22px;font-weight:600;text-decoration:none;font-size:14px;border:none;cursor:pointer;transition:background-color 200ms cubic-bezier(0.22,1,0.36,1)}
+.btn:hover{background:var(--primary-container)}
+.hamburger{display:none;background:none;border:none;color:var(--on-surface);font-size:26px;cursor:pointer;min-width:48px;min-height:48px}
+@media(max-width:640px){
+nav{position:fixed;top:60px;right:16px;flex-direction:column;align-items:stretch;background:var(--surface);border:2px dashed var(--outline-variant);border-radius:var(--radius-lg);padding:8px;box-shadow:var(--shadow);display:none}
+nav.open{display:flex}
+.hamburger{display:flex;align-items:center;justify-content:center}
+}
+/* ===== HERO ===== */
 .hero{text-align:center;padding:64px 0 48px;background:radial-gradient(circle at 50% 0%,rgba(45,212,191,0.18),transparent 60%)}
 .tag{font-family:var(--font-mono);font-size:12px;letter-spacing:0.05em;color:var(--secondary);text-transform:uppercase}
 .hero h1{font-family:var(--font-head);font-size:clamp(34px,6vw,56px);font-weight:800;line-height:1.1;margin:14px 0;letter-spacing:-0.02em}
 .hero h1 span{color:var(--secondary)}
 .hero p{color:var(--on-surface-variant);max-width:540px;margin:0 auto 24px}
+/* ===== GRID ===== */
 .grid{display:grid;gap:14px;grid-template-columns:1fr;max-width:1000px;margin:0 auto}
 @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
 .card{background:var(--surface);border:2px dashed var(--outline-variant);border-radius:var(--radius-lg);padding:24px;transition:all 300ms cubic-bezier(0.22,1,0.36,1)}
@@ -41,8 +66,17 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 </head>
 <body>
 <header>
-<div class="logo">🐙 FOMO INK</div>
-<a class="btn" href="app.html">Masuk ke App →</a>
+<a class="logo" href="index.html">
+<img class="logo-img" src="logo.png" alt="FOMO INK" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+<span class="kraken">🐙</span><b>FOMO INK</b>
+</a>
+<nav id="nav">
+<a href="index.html" class="active">Home</a>
+<a href="app.html">App</a>
+<a href="#treasury">Treasury</a>
+<button class="btn" id="connectBtn">🔗 Connect</button>
+</nav>
+<button class="hamburger" id="burger" aria-label="Menu">☰</button>
 </header>
 <section class="hero">
 <div class="tag">🌊 Built on Ink L2 · Optimism Superchain</div>
@@ -55,11 +89,17 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 <div class="card"><div class="ico">🐙</div><h3>Ink Passport</h3><p>NFT dinamis yang berubah visual tiap quest selesai.</p></div>
 <div class="card"><div class="ico">⚔️</div><h3>DeFi Quests</h3><p>Misi swap, stake, bridge di lautan Ink L2.</p></div>
 </section>
-<div class="treasury">
+<div class="treasury" id="treasury">
 <h2>🪙 Treasury yang Menyenangkan</h2>
 <p style="color:var(--on-primary-container)">Reward pool laut dalam. Poinmu berubah jadi harta karun on-chain.</p>
 </div>
 <div class="fee">ℹ️ <b>Transparansi:</b> Setiap aksi on-chain dikenakan <b>Protocol Fee ~$0.02</b> ("Quest Energy") yang ditampilkan jelas sebelum disetujui.</div>
 <footer>🐙 FOMO INK · Ocean GameFi on Ink L2</footer>
+<script>
+const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.onclick=()=>nav.classList.toggle('open');
+nav.querySelectorAll('a').forEach(a=>a.onclick=()=>nav.classList.remove('open'));
+document.getElementById('connectBtn').onclick=()=>alert('🔗 WalletConnect v2 menyusul di update berikutnya');
+</script>
 </body>
 </html>
