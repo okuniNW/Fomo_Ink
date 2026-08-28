@@ -18,7 +18,7 @@
 --secondary:#a8e5e5;--on-secondary:#0a3703;--secondary-container:#e6fbfb;
 --tertiary:#dd6c3e;--on-tertiary:#ffffff;
 --gold:#ffeb5b;--gold-soft:#fff7cc;
---shadow-sm:0 1px 2px rgba(91,33,182,0.06);--shadow-md:0 3px 8px rgba(91,33,182,0.12);--shadow-lg:0 12px 32px rgba(91,33,182,0.18);
+--shadow-sm:0 1px 2px rgba(91,33,182,0.06);--shadow-md:0 3px 8px rgba(91,33,182,0.12);--shadow-lg:0 12px 32px rgba(91,33,182,0.20);
 --radius-sm:4px;--radius:6px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--radius-full:40px;
 --ease:cubic-bezier(0.22,1,0.36,1);
 --font-head:'Bricolage Grotesque',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'Roboto Mono',monospace;
@@ -64,11 +64,16 @@ nav a.active{background:var(--primary-gradient);color:#fff}
 .panel:hover{background:var(--surface-container-high);box-shadow:var(--shadow-lg)}
 .panel h2{font-family:var(--font-head);font-weight:600;font-size:22px;line-height:28px;color:var(--primary);margin-bottom:16px}
 #wallet{font-family:var(--font-mono);font-size:14px;color:var(--on-surface-variant);background:var(--surface-container-low);border:1px solid var(--outline-variant);border-radius:var(--radius);padding:14px}
-.quest{background:var(--surface-container-low);border:1px solid var(--outline-variant);border-radius:var(--radius-md);padding:14px 16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.quest b{color:var(--primary);font-weight:600;font-size:16px}
-.pts{background:var(--gold-soft);color:var(--primary-strong);border-radius:var(--radius-full);padding:5px 14px;font-family:var(--font-mono);font-size:13px;white-space:nowrap;font-weight:700}
+.quest{background:var(--surface-container-low);border:1px solid var(--outline-variant);border-radius:var(--radius-md);padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.quest-main{flex:1;min-width:0}
+.quest-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.quest-row b{color:var(--primary);font-weight:600;font-size:15px}
+.quest-status{font-family:var(--font-mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--surface-container-high);color:var(--primary);border-radius:var(--radius-full);padding:4px 10px;white-space:nowrap}
+.pts{background:var(--gold-soft);color:var(--primary-strong);border-radius:var(--radius-full);padding:6px 14px;font-family:var(--font-mono);font-size:13px;white-space:nowrap;font-weight:700}
 .upload{border:2px dashed var(--outline-variant);border-radius:var(--radius-md);padding:18px;text-align:center;color:var(--on-surface-variant);margin-top:14px;font-size:16px}
 .note{color:var(--on-surface-variant);font-size:14px;margin-top:10px;line-height:24px}
+.bar{height:6px;border-radius:var(--radius-full);background:var(--surface-container-high);overflow:hidden}
+.bar-fill{height:100%;border-radius:inherit;background:var(--primary-gradient);width:0%;transition:width .8s var(--ease)}
 footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-size:14px;border-top:2px dashed var(--outline-variant)}
 </style>
 </head>
@@ -116,9 +121,18 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 </div>
 <div class="panel">
 <h2 data-i18n="app_quests">DeFi Quests</h2>
-<div class="quest"><span><b data-i18n="quest1">Quest 1: Swap tokens on an Ink DEX</b></span><span class="pts">+10 🪙</span></div>
-<div class="quest"><span><b data-i18n="quest2">Quest 2: Stake INKQ</b></span><span class="pts">+20 🪙</span></div>
-<div class="quest"><span><b data-i18n="quest3">Quest 3: Bridge to Ink L2</b></span><span class="pts">+15 🪙</span></div>
+<div class="quest">
+<div class="quest-main"><div class="quest-row"><b data-i18n="quest1">Quest 1: Swap tokens on an Ink DEX</b><span class="quest-status" data-i18n="quest_todo">To do</span></div><div class="bar"><div class="bar-fill" style="width:0%"></div></div></div>
+<span class="pts">+10 🪙</span>
+</div>
+<div class="quest">
+<div class="quest-main"><div class="quest-row"><b data-i18n="quest2">Quest 2: Stake INKQ</b><span class="quest-status" data-i18n="quest_todo">To do</span></div><div class="bar"><div class="bar-fill" style="width:0%"></div></div></div>
+<span class="pts">+20 🪙</span>
+</div>
+<div class="quest">
+<div class="quest-main"><div class="quest-row"><b data-i18n="quest3">Quest 3: Bridge to Ink L2</b><span class="quest-status" data-i18n="quest_todo">To do</span></div><div class="bar"><div class="bar-fill" style="width:0%"></div></div></div>
+<span class="pts">+15 🪙</span>
+</div>
 <p class="note" data-i18n="app_questNote">Real missions and action buttons arrive after wallet connection.</p>
 </div>
 </section>
@@ -127,13 +141,13 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 
 <script>
 const I18N={
-en:{home:"Home",app:"App",treasury:"Treasury",connect:"Connect",app_passport:"Ink Passport",app_wallet:"Not connected",app_passportDesc:"Levels and Kraken badges appear here once your wallet is connected.",app_upload:"Upload Ocean Character (IPFS / NFT coming soon)",app_quests:"DeFi Quests",quest1:"Quest 1: Swap tokens on an Ink DEX",quest2:"Quest 2: Stake INKQ",quest3:"Quest 3: Bridge to Ink L2",app_questNote:"Real missions and action buttons arrive after wallet connection.",footer:"FOMO INK · Ocean GameFi on Ink L2"},
-id:{home:"Beranda",app:"App",treasury:"Treasury",connect:"Connect",app_passport:"Ink Passport",app_wallet:"Belum connect",app_passportDesc:"Level & badge kraken akan tampil di sini setelah wallet nyambung.",app_upload:"Upload Karakter Laut (IPFS / NFT menyusul)",app_quests:"DeFi Quests",quest1:"Quest 1: Swap token di Ink DEX",quest2:"Quest 2: Stake INKQ",quest3:"Quest 3: Bridge ke Ink L2",app_questNote:"Misi nyata + tombol jalankan menyusul setelah konek wallet.",footer:"FOMO INK · Ocean GameFi on Ink L2"},
-pt:{home:"Início",app:"App",treasury:"Tesouraria",connect:"Conectar",app_passport:"Ink Passport",app_wallet:"Não conectado",app_passportDesc:"Níveis e emblemas kraken aparecem aqui após conectar a carteira.",app_upload:"Enviar Personagem Oceânico (IPFS / NFT em breve)",app_quests:"Quests DeFi",quest1:"Quest 1: Trocar tokens em um DEX Ink",quest2:"Quest 2: Stake de INKQ",quest3:"Quest 3: Bridge para Ink L2",app_questNote:"Missões reais e botões chegam após conectar a carteira.",footer:"FOMO INK · GameFi Oceânico na Ink L2"},
-zh:{home:"首页",app:"应用",treasury:"金库",connect:"连接",app_passport:"Ink Passport",app_wallet:"未连接",app_passportDesc:"连接钱包后，等级与 Kraken 徽章将显示于此。",app_upload:"上传海洋角色（IPFS / NFT 即将推出）",app_quests:"DeFi 任务",quest1:"任务 1：在 Ink DEX 兑换代币",quest2:"任务 2：质押 INKQ",quest3:"任务 3：跨链至 Ink L2",app_questNote:"真实任务与操作按钮将在连接钱包后上线。",footer:"FOMO INK · Ink L2 海洋 GameFi"},
-ko:{home:"홈",app:"앱",treasury:"트레저리",connect:"연결",app_passport:"Ink Passport",app_wallet:"연결 안 됨",app_passportDesc:"지갑 연결 후 레벨과 Kraken 배지가 표시됩니다.",app_upload:"해양 캐릭터 업로드 (IPFS / NFT 곧 출시)",app_quests:"DeFi 퀘스트",quest1:"퀘스트 1: Ink DEX에서 토큰 스왑",quest2:"퀘스트 2: INKQ 스테이크",quest3:"퀘스트 3: Ink L2로 브릿지",app_questNote:"실제 미션과 버튼은 지갑 연결 후 제공됩니다.",footer:"FOMO INK · Ink L2 해양 GameFi"}
+en:{home:"Home",app:"App",treasury:"Treasury",connect:"Connect",app_passport:"Ink Passport",app_wallet:"Not connected",app_passportDesc:"Levels and Kraken badges appear here once your wallet is connected.",app_upload:"Upload Ocean Character (IPFS / NFT coming soon)",app_quests:"DeFi Quests",quest1:"Quest 1: Swap tokens on an Ink DEX",quest2:"Quest 2: Stake INKQ",quest3:"Quest 3: Bridge to Ink L2",app_questNote:"Real missions and action buttons arrive after wallet connection.",quest_todo:"To do",footer:"FOMO INK · Ocean GameFi on Ink L2"},
+id:{home:"Beranda",app:"App",treasury:"Treasury",connect:"Connect",app_passport:"Ink Passport",app_wallet:"Belum connect",app_passportDesc:"Level & badge kraken akan tampil di sini setelah wallet nyambung.",app_upload:"Upload Karakter Laut (IPFS / NFT menyusul)",app_quests:"DeFi Quests",quest1:"Quest 1: Swap token di Ink DEX",quest2:"Quest 2: Stake INKQ",quest3:"Quest 3: Bridge ke Ink L2",app_questNote:"Misi nyata + tombol jalankan menyusul setelah konek wallet.",quest_todo:"Belum",footer:"FOMO INK · Ocean GameFi on Ink L2"},
+pt:{home:"Início",app:"App",treasury:"Tesouraria",connect:"Conectar",app_passport:"Ink Passport",app_wallet:"Não conectado",app_passportDesc:"Níveis e emblemas kraken aparecem aqui após conectar a carteira.",app_upload:"Enviar Personagem Oceânico (IPFS / NFT em breve)",app_quests:"Quests DeFi",quest1:"Quest 1: Trocar tokens em um DEX Ink",quest2:"Quest 2: Stake de INKQ",quest3:"Quest 3: Bridge para Ink L2",app_questNote:"Missões reais e botões chegam após conectar a carteira.",quest_todo:"A fazer",footer:"FOMO INK · GameFi Oceânico na Ink L2"},
+zh:{home:"首页",app:"应用",treasury:"金库",connect:"连接",app_passport:"Ink Passport",app_wallet:"未连接",app_passportDesc:"连接钱包后，等级与 Kraken 徽章将显示于此。",app_upload:"上传海洋角色（IPFS / NFT 即将推出）",app_quests:"DeFi 任务",quest1:"任务 1：在 Ink DEX 兑换代币",quest2:"任务 2：质押 INKQ",quest3:"任务 3：跨链至 Ink L2",app_questNote:"真实任务与操作按钮将在连接钱包后上线。",quest_todo:"待办",footer:"FOMO INK · Ink L2 海洋 GameFi"},
+ko:{home:"홈",app:"앱",treasury:"트레저리",connect:"연결",app_passport:"Ink Passport",app_wallet:"연결 안 됨",app_passportDesc:"지갑 연결 후 레벨과 Kraken 배지가 표시됩니다.",app_upload:"해양 캐릭터 업로드 (IPFS / NFT 곧 출시)",app_quests:"DeFi 퀘스트",quest1:"퀘스트 1: Ink DEX에서 토큰 스왑",quest2:"퀘스트 2: INKQ 스테이크",quest3:"퀘스트 3: Ink L2로 브릿지",app_questNote:"실제 미션과 버튼은 지갑 연결 후 제공됩니다.",quest_todo:"할 일",footer:"FOMO INK · Ink L2 해양 GameFi"}
 };
-const KEYMAP={home:"home",app:"app",treasury:"treasury",connect:"connect",app_passport:"app_passport",app_wallet:"app_wallet",app_passportDesc:"app_passportDesc",app_upload:"app_upload",app_quests:"app_quests",quest1:"quest1",quest2:"quest2",quest3:"quest3",app_questNote:"app_questNote",footer:"footer"};
+const KEYMAP={home:"home",app:"app",treasury:"treasury",connect:"connect",app_passport:"app_passport",app_wallet:"app_wallet",app_passportDesc:"app_passportDesc",app_upload:"app_upload",app_quests:"app_quests",quest1:"quest1",quest2:"quest2",quest3:"quest3",app_questNote:"app_questNote",quest_todo:"quest_todo",footer:"footer"};
 const LANG_META={en:{flag:'🇬🇧',name:'English'},id:{flag:'🇮🇩',name:'Indonesia'},pt:{flag:'🇧🇷',name:'Português (BR)'},zh:{flag:'🇨🇳',name:'中文'},ko:{flag:'🇰🇷',name:'한국어'}};
 function applyLang(l){
 document.documentElement.lang=l;
