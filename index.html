@@ -18,7 +18,7 @@
 --secondary:#a8e5e5;--on-secondary:#0a3703;--secondary-container:#e6fbfb;
 --tertiary:#dd6c3e;--on-tertiary:#ffffff;
 --gold:#ffeb5b;--gold-soft:#fff7cc;
---shadow-sm:0 1px 2px rgba(91,33,182,0.06);--shadow-md:0 3px 8px rgba(91,33,182,0.12);--shadow-lg:0 12px 32px rgba(91,33,182,0.18);
+--shadow-sm:0 1px 2px rgba(91,33,182,0.06);--shadow-md:0 3px 8px rgba(91,33,182,0.12);--shadow-lg:0 12px 32px rgba(91,33,182,0.20);
 --radius-sm:4px;--radius:6px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--radius-full:40px;
 --ease:cubic-bezier(0.22,1,0.36,1);
 --font-head:'Bricolage Grotesque',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'Roboto Mono',monospace;
@@ -43,7 +43,6 @@ nav a:hover{background:var(--surface-container-high)}
 nav a.active{background:var(--primary-gradient);color:#fff}
 .btn{background:var(--primary-gradient);color:#fff;border:none;border-radius:var(--radius-full);padding:11px 22px;font-weight:600;font-size:14px;letter-spacing:0.01em;cursor:pointer;height:44px;display:flex;align-items:center;transition:background-color 200ms var(--ease);box-shadow:0 4px 14px rgba(91,33,182,0.3)}
 .btn:hover{background:var(--primary-strong)}
-/* LANGUAGE DROPDOWN */
 .lang{position:relative}
 .lang-btn{display:flex;align-items:center;gap:8px;background:var(--surface-container);border:1px solid var(--outline-variant);border-radius:var(--radius-full);padding:8px 14px;min-height:44px;cursor:pointer;color:var(--primary);font-family:var(--font-body);font-size:14px;font-weight:600;transition:all 200ms var(--ease)}
 .lang-btn:hover{background:var(--surface-container-high);border-color:var(--primary)}
@@ -71,17 +70,27 @@ nav a.active{background:var(--primary-gradient);color:#fff}
 /* CARDS */
 .grid{display:grid;gap:24px;grid-template-columns:1fr;margin:0 0 40px}
 @media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--surface);border:1px solid var(--outline-variant);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-md);transition:all 300ms var(--ease);position:relative}
-.card:hover{background:var(--surface-container-high);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-.card .ico{font-size:24px;margin-bottom:14px;display:block}
-.card h3{font-family:var(--font-head);color:var(--primary);font-weight:600;font-size:22px;line-height:28px;margin-bottom:8px}
-.card p{color:var(--on-surface-variant);font-size:16px;line-height:24px}
-.badge{background:var(--secondary);color:var(--on-surface);font-family:var(--font-mono);font-size:12px;letter-spacing:0.05em;border-radius:var(--radius-full);padding:6px 14px;height:30px;display:inline-flex;align-items:center;position:absolute;top:20px;right:20px}
-.badge-pri{background:var(--gold);color:var(--primary-strong)}
+.card{background:var(--surface);border:1px solid var(--outline-variant);border-radius:var(--radius-lg);padding:28px 24px;box-shadow:var(--shadow-md);transition:all 300ms var(--ease);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;padding:1.5px;border-radius:inherit;background:var(--primary-gradient);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s var(--ease);pointer-events:none}
+.card:hover{background:var(--surface-container-high);box-shadow:var(--shadow-lg);transform:translateY(-6px)}
+.card:hover::before{opacity:1}
+.card .ico{font-size:28px;margin-bottom:14px;display:block}
+.card h3{font-family:var(--font-head);color:var(--primary);font-weight:600;font-size:22px;line-height:28px;margin-bottom:8px;padding-right:74px}
+.card p{color:var(--on-surface-variant);font-size:15px;line-height:23px}
+.badge{position:absolute;top:20px;right:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;border-radius:var(--radius-full);padding:5px 12px;font-weight:700;height:auto}
+.badge-new{background:var(--gold);color:var(--primary-strong)}
+.badge-pop{background:var(--primary-gradient);color:#fff}
+.badge-soon{background:var(--secondary);color:var(--on-surface)}
+.card-foot{margin-top:18px;padding-top:14px;border-top:1px dashed var(--outline-variant)}
+.card-foot-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--on-surface-variant);margin-bottom:8px;font-weight:500}
+.card-pct{font-family:var(--font-mono);font-weight:700;color:var(--primary)}
+.bar{height:6px;border-radius:var(--radius-full);background:var(--surface-container-high);overflow:hidden}
+.bar-fill{height:100%;border-radius:inherit;background:var(--primary-gradient);transition:width .8s var(--ease)}
 /* TREASURY + FEE */
 .treasury{background:var(--surface);border:1px solid var(--outline-variant);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-md);text-align:center;margin-bottom:24px;position:relative}
 .treasury h2{font-family:var(--font-head);color:var(--primary);font-weight:700;font-size:32px;line-height:40px;letter-spacing:-0.01em;margin:14px 0 10px}
 .treasury p{color:var(--on-surface-variant);max-width:520px;margin:0 auto;font-size:18px}
+.badge-pri{position:static;display:inline-flex;background:var(--gold);color:var(--primary-strong);font-family:var(--font-mono);font-size:12px;letter-spacing:0.05em;text-transform:uppercase;border-radius:var(--radius-full);padding:6px 14px;font-weight:700}
 .fee{display:flex;gap:10px;align-items:flex-start;background:var(--surface-container);border:1px solid var(--outline-variant);border-radius:var(--radius-lg);padding:16px 18px;color:var(--on-surface-variant);font-size:16px;margin-bottom:64px;line-height:24px}
 .fee b{color:var(--primary)}
 footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-size:14px;border-top:2px dashed var(--outline-variant)}
@@ -132,9 +141,27 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 
 <section class="wrap">
 <div class="grid">
-<div class="card"><span class="badge" data-i18n="badge.new">NEW</span><span class="ico">🎨</span><h3 data-i18n="card1.title">Custom Avatar</h3><p data-i18n="card1.desc">Upload your own image → become a Kraken NFT character stored on IPFS.</p></div>
-<div class="card"><span class="ico">🐙</span><h3 data-i18n="card2.title">Ink Passport</h3><p data-i18n="card2.desc">A dynamic NFT that evolves visually with every quest you complete.</p></div>
-<div class="card"><span class="ico">⚔️</span><h3 data-i18n="card3.title">DeFi Quests</h3><p data-i18n="card3.desc">Swap, stake, and bridge missions across the Ink L2 ocean.</p></div>
+<div class="card">
+<span class="badge badge-new" data-i18n="card1_badge">NEW</span>
+<span class="ico">🎨</span>
+<h3 data-i18n="card1.title">Custom Avatar</h3>
+<p data-i18n="card1.desc">Upload your own image → become a Kraken NFT character stored on IPFS.</p>
+<div class="card-foot"><div class="card-foot-row"><span data-i18n="card1_foot">Minted on IPFS</span><span class="card-pct">32%</span></div><div class="bar"><div class="bar-fill" style="width:32%"></div></div></div>
+</div>
+<div class="card">
+<span class="badge badge-pop" data-i18n="card2_badge">POPULAR</span>
+<span class="ico">🐙</span>
+<h3 data-i18n="card2.title">Ink Passport</h3>
+<p data-i18n="card2.desc">A dynamic NFT that evolves visually with every quest you complete.</p>
+<div class="card-foot"><div class="card-foot-row"><span data-i18n="card2_foot">Avg Passport Lv.7</span><span class="card-pct">70%</span></div><div class="bar"><div class="bar-fill" style="width:70%"></div></div></div>
+</div>
+<div class="card">
+<span class="badge badge-soon" data-i18n="card3_badge">SOON</span>
+<span class="ico">⚔️</span>
+<h3 data-i18n="card3.title">DeFi Quests</h3>
+<p data-i18n="card3.desc">Swap, stake, and bridge missions across the Ink L2 ocean.</p>
+<div class="card-foot"><div class="card-foot-row"><span data-i18n="card3_foot">12 quests live</span><span class="card-pct">60%</span></div><div class="bar"><div class="bar-fill" style="width:60%"></div></div></div>
+</div>
 </div>
 
 <div class="treasury" id="treasury">
@@ -150,13 +177,13 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 
 <script>
 const I18N={
-en:{home:"Home",app:"App",treasury:"Treasury",connect:"Connect",hero_tag:"Built on Ink L2 · Optimism Superchain",hero_title1:"Don't FOMO.",hero_title2:"Conquer the Ink Ocean.",hero_desc:"GameFi × DeFi on Ink L2. Complete on-chain missions, earn points, and forge an evolving Kraken Ink Passport.",hero_cta:"Start the Journey",card1_title:"Custom Avatar",card1_desc:"Upload your own image → become a Kraken NFT character stored on IPFS.",card2_title:"Ink Passport",card2_desc:"A dynamic NFT that evolves visually with every quest you complete.",card3_title:"DeFi Quests",card3_desc:"Swap, stake, and bridge missions across the Ink L2 ocean.",treasury_title:"A Treasury Worth Diving For",treasury_desc:"Deep-ocean reward pool. Your points become on-chain treasure.",fee:"<b>Transparency:</b> Every on-chain action carries a ~$0.02 Protocol Fee (\"Quest Energy\"), shown clearly before you approve.",footer:"FOMO INK · Ocean GameFi on Ink L2",badge_new:"NEW",badge_reward:"REWARD POOL"},
-id:{home:"Beranda",app:"App",treasury:"Treasury",connect:"Connect",hero_tag:"Dibangun di Ink L2 · Optimism Superchain",hero_title1:"Jangan FOMO.",hero_title2:"Taklukkan Lautan Ink.",hero_desc:"GameFi × DeFi di Ink L2. Selesaikan misi on-chain, kumpulkan poin, dan bentuk Ink Passport kraken yang berevolusi.",hero_cta:"Mulai Petualangan",card1_title:"Custom Avatar",card1_desc:"Upload gambar sendiri → jadi karakter kraken NFT milikmu di IPFS.",card2_title:"Ink Passport",card2_desc:"NFT dinamis yang berubah visual tiap quest selesai.",card3_title:"DeFi Quests",card3_desc:"Misi swap, stake, bridge di lautan Ink L2.",treasury_title:"Treasury yang Menyenangkan",treasury_desc:"Reward pool laut dalam. Poinmu berubah jadi harta karun on-chain.",fee:"<b>Transparansi:</b> Setiap aksi on-chain dikenakan Protocol Fee ~$0,02 (\"Quest Energy\"), ditampilkan jelas sebelum disetujui.",footer:"FOMO INK · Ocean GameFi on Ink L2",badge_new:"BARU",badge_reward:"POOL HADIAH"},
-pt:{home:"Início",app:"App",treasury:"Tesouraria",connect:"Conectar",hero_tag:"Construído na Ink L2 · Optimism Superchain",hero_title1:"Não dê FOMO.",hero_title2:"Conquiste o Oceano Ink.",hero_desc:"GameFi × DeFi na Ink L2. Complete missões on-chain, acumule pontos e forje um Ink Passport kraken em evolução.",hero_cta:"Começar a Jornada",card1_title:"Avatar Personalizado",card1_desc:"Envie sua imagem → vire um personagem kraken NFT no IPFS.",card2_title:"Ink Passport",card2_desc:"Um NFT dinâmico que evolui visualmente a cada quest.",card3_title:"Quests DeFi",card3_desc:"Missões de swap, stake e bridge no oceano Ink L2.",treasury_title:"Uma Tesouraria para Mergulhar",treasury_desc:"Pool de recompensas das profundezas. Seus pontos viram tesouro on-chain.",fee:"<b>Transparência:</b> Cada ação on-chain tem uma Taxa de Protocolo de ~$0,02 (\"Quest Energy\"), exibida antes de aprovar.",footer:"FOMO INK · GameFi Oceânico na Ink L2",badge_new:"NOVO",badge_reward:"POOL DE PRÊMIOS"},
-zh:{home:"首页",app:"应用",treasury:"金库",connect:"连接",hero_tag:"构建于 Ink L2 · Optimism Superchain",hero_title1:"别再 FOMO。",hero_title2:"征服 Ink 海洋。",hero_desc:"Ink L2 上的 GameFi × DeFi。完成链上任务、累积积分，锻造不断进化的 Kraken Ink Passport。",hero_cta:"开启旅程",card1_title:"自定义头像",card1_desc:"上传你的图片 → 成为存储在 IPFS 上的 Kraken NFT 角色。",card2_title:"Ink Passport",card2_desc:"随每次任务完成的视觉进化动态 NFT。",card3_title:"DeFi 任务",card3_desc:"在 Ink L2 海洋中 Swap、Stake 与 Bridge。",treasury_title:"值得探索的金库",treasury_desc:"深海奖励池。你的积分化为链上宝藏。",fee:"<b>透明机制：</b>每笔链上操作收取约 $0.02 协议费（“Quest Energy”），在确认前清晰显示。",footer:"FOMO INK · Ink L2 海洋 GameFi",badge_new:"新",badge_reward:"奖励池"},
-ko:{home:"홈",app:"앱",treasury:"트레저리",connect:"연결",hero_tag:"Ink L2 기반 · Optimism Superchain",hero_title1:"FOMO에 빠지지 마세요.",hero_title2:"Ink 바다를 정복하세요.",hero_desc:"Ink L2 기반 GameFi × DeFi. 온체인 미션을 완료하고 포인트를 모아 진화하는 Kraken Ink Passport를 만드세요.",hero_cta:"여정 시작하기",card1_title:"커스텀 아바타",card1_desc:"이미지를 업로드하세요 → IPFS에 저장되는 Kraken NFT 캐릭터가 됩니다.",card2_title:"Ink Passport",card2_desc:"퀘스트를 완료할 때마다 시각적으로 진화하는 다이내믹 NFT.",card3_title:"DeFi 퀘스트",card3_desc:"Ink L2 바다에서 스왑, 스테이크, 브릿지 미션.",treasury_title:"놓칠 수 없는 트레저리",treasury_desc:"심해 보상 풀. 포인트가 온체인 보물이 됩니다.",fee:"<b>투명성:</b> 모든 온체인 작업에는 약 $0.02의 프로토콜 수수료(\"Quest Energy\")가 부과되며 승인 전에 명확히 표시됩니다.",footer:"FOMO INK · Ink L2 해양 GameFi",badge_new:"신규",badge_reward:"보상 풀"}
+en:{home:"Home",app:"App",treasury:"Treasury",connect:"Connect",hero_tag:"Built on Ink L2 · Optimism Superchain",hero_title1:"Don't FOMO.",hero_title2:"Conquer the Ink Ocean.",hero_desc:"GameFi × DeFi on Ink L2. Complete on-chain missions, earn points, and forge an evolving Kraken Ink Passport.",hero_cta:"Start the Journey",card1_title:"Custom Avatar",card1_desc:"Upload your own image → become a Kraken NFT character stored on IPFS.",card1_badge:"NEW",card1_foot:"Minted on IPFS",card2_title:"Ink Passport",card2_desc:"A dynamic NFT that evolves visually with every quest you complete.",card2_badge:"POPULAR",card2_foot:"Avg Passport Lv.7",card3_title:"DeFi Quests",card3_desc:"Swap, stake, and bridge missions across the Ink L2 ocean.",card3_badge:"SOON",card3_foot:"12 quests live",treasury_title:"A Treasury Worth Diving For",treasury_desc:"Deep-ocean reward pool. Your points become on-chain treasure.",fee:"<b>Transparency:</b> Every on-chain action carries a ~$0.02 Protocol Fee (\"Quest Energy\"), shown clearly before you approve.",footer:"FOMO INK · Ocean GameFi on Ink L2",badge_new:"NEW",badge_reward:"REWARD POOL"},
+id:{home:"Beranda",app:"App",treasury:"Treasury",connect:"Connect",hero_tag:"Dibangun di Ink L2 · Optimism Superchain",hero_title1:"Jangan FOMO.",hero_title2:"Taklukkan Lautan Ink.",hero_desc:"GameFi × DeFi di Ink L2. Selesaikan misi on-chain, kumpulkan poin, dan bentuk Ink Passport kraken yang berevolusi.",hero_cta:"Mulai Petualangan",card1_title:"Custom Avatar",card1_desc:"Upload gambar sendiri → jadi karakter kraken NFT milikmu di IPFS.",card1_badge:"BARU",card1_foot:"Di-mint ke IPFS",card2_title:"Ink Passport",card2_desc:"NFT dinamis yang berubah visual tiap quest selesai.",card2_badge:"POPULER",card2_foot:"Rata-rata Passport Lv.7",card3_title:"DeFi Quests",card3_desc:"Misi swap, stake, bridge di lautan Ink L2.",card3_badge:"SEGERA",card3_foot:"12 quest aktif",treasury_title:"Treasury yang Menyenangkan",treasury_desc:"Reward pool laut dalam. Poinmu berubah jadi harta karun on-chain.",fee:"<b>Transparansi:</b> Setiap aksi on-chain dikenakan Protocol Fee ~$0,02 (\"Quest Energy\"), ditampilkan jelas sebelum disetujui.",footer:"FOMO INK · Ocean GameFi on Ink L2",badge_new:"BARU",badge_reward:"POOL HADIAH"},
+pt:{home:"Início",app:"App",treasury:"Tesouraria",connect:"Conectar",hero_tag:"Construído na Ink L2 · Optimism Superchain",hero_title1:"Não dê FOMO.",hero_title2:"Conquiste o Oceano Ink.",hero_desc:"GameFi × DeFi na Ink L2. Complete missões on-chain, acumule pontos e forje um Ink Passport kraken em evolução.",hero_cta:"Começar a Jornada",card1_title:"Avatar Personalizado",card1_desc:"Envie sua imagem → vire um personagem kraken NFT no IPFS.",card1_badge:"NOVO",card1_foot:"Cunhado no IPFS",card2_title:"Ink Passport",card2_desc:"Um NFT dinâmico que evolui visualmente a cada quest.",card2_badge:"POPULAR",card2_foot:"Passport médio Lv.7",card3_title:"Quests DeFi",card3_desc:"Missões de swap, stake e bridge no oceano Ink L2.",card3_badge:"EM BREVE",card3_foot:"12 quests ativas",treasury_title:"Uma Tesouraria para Mergulhar",treasury_desc:"Pool de recompensas das profundezas. Seus pontos viram tesouro on-chain.",fee:"<b>Transparência:</b> Cada ação on-chain tem uma Taxa de Protocolo de ~$0,02 (\"Quest Energy\"), exibida antes de aprovar.",footer:"FOMO INK · GameFi Oceânico na Ink L2",badge_new:"NOVO",badge_reward:"POOL DE PRÊMIOS"},
+zh:{home:"首页",app:"应用",treasury:"金库",connect:"连接",hero_tag:"构建于 Ink L2 · Optimism Superchain",hero_title1:"别再 FOMO。",hero_title2:"征服 Ink 海洋。",hero_desc:"Ink L2 上的 GameFi × DeFi。完成链上任务、累积积分，锻造不断进化的 Kraken Ink Passport。",hero_cta:"开启旅程",card1_title:"自定义头像",card1_desc:"上传你的图片 → 成为存储在 IPFS 上的 Kraken NFT 角色。",card1_badge:"新",card1_foot:"已铸造至 IPFS",card2_title:"Ink Passport",card2_desc:"随每次任务完成的视觉进化动态 NFT。",card2_badge:"热门",card2_foot:"平均 Passport Lv.7",card3_title:"DeFi 任务",card3_desc:"在 Ink L2 海洋中 Swap、Stake 与 Bridge。",card3_badge:"即将",card3_foot:"12 个任务进行中",treasury_title:"值得探索的金库",treasury_desc:"深海奖励池。你的积分化为链上宝藏。",fee:"<b>透明机制：</b>每笔链上操作收取约 $0.02 协议费（“Quest Energy”），在确认前清晰显示。",footer:"FOMO INK · Ink L2 海洋 GameFi",badge_new:"新",badge_reward:"奖励池"},
+ko:{home:"홈",app:"앱",treasury:"트레저리",connect:"연결",hero_tag:"Ink L2 기반 · Optimism Superchain",hero_title1:"FOMO에 빠지지 마세요.",hero_title2:"Ink 바다를 정복하세요.",hero_desc:"Ink L2 기반 GameFi × DeFi. 온체인 미션을 완료하고 포인트를 모아 진화하는 Kraken Ink Passport를 만드세요.",hero_cta:"여정 시작하기",card1_title:"커스텀 아바타",card1_desc:"이미지를 업로드하세요 → IPFS에 저장되는 Kraken NFT 캐릭터가 됩니다.",card1_badge:"신규",card1_foot:"IPFS에 민팅됨",card2_title:"Ink Passport",card2_desc:"퀘스트를 완료할 때마다 시각적으로 진화하는 다이내믹 NFT.",card2_badge:"인기",card2_foot:"평균 Passport Lv.7",card3_title:"DeFi 퀘스트",card3_desc:"Ink L2 바다에서 스왑, 스테이크, 브릿지 미션.",card3_badge:"곧",card3_foot:"12개 퀘스트 진행중",treasury_title:"놓칠 수 없는 트레저리",treasury_desc:"심해 보상 풀. 포인트가 온체인 보물이 됩니다.",fee:"<b>투명성:</b> 모든 온체인 작업에는 약 $0.02의 프로토콜 수수료(\"Quest Energy\")가 부과되며 승인 전에 명확히 표시됩니다.",footer:"FOMO INK · Ink L2 해양 GameFi",badge_new:"신규",badge_reward:"보상 풀"}
 };
-const KEYMAP={home:"home",app:"app",treasury:"treasury",connect:"connect",hero_tag:"hero_tag",hero_title1:"hero_title1",hero_title2:"hero_title2",hero_desc:"hero_desc",hero_cta:"hero_cta",card1_title:"card1_title",card1_desc:"card1_desc",card2_title:"card2_title",card2_desc:"card2_desc",card3_title:"card3_title",card3_desc:"card3_desc",treasury_title:"treasury_title",treasury_desc:"treasury_desc",fee:"fee",footer:"footer",badge_new:"badge_new",badge_reward:"badge_reward",app_passport:"app_passport",app_wallet:"app_wallet",app_passportDesc:"app_passportDesc",app_upload:"app_upload",app_quests:"app_quests",quest1:"quest1",quest2:"quest2",quest3:"quest3",app_questNote:"app_questNote"};
+const KEYMAP={home:"home",app:"app",treasury:"treasury",connect:"connect",hero_tag:"hero_tag",hero_title1:"hero_title1",hero_title2:"hero_title2",hero_desc:"hero_desc",hero_cta:"hero_cta",card1_title:"card1_title",card1_desc:"card1_desc",card1_badge:"card1_badge",card1_foot:"card1_foot",card2_title:"card2_title",card2_desc:"card2_desc",card2_badge:"card2_badge",card2_foot:"card2_foot",card3_title:"card3_title",card3_desc:"card3_desc",card3_badge:"card3_badge",card3_foot:"card3_foot",treasury_title:"treasury_title",treasury_desc:"treasury_desc",fee:"fee",footer:"footer",badge_new:"badge_new",badge_reward:"badge_reward",app_passport:"app_passport",app_wallet:"app_wallet",app_passportDesc:"app_passportDesc",app_upload:"app_upload",app_quests:"app_quests",quest_progress:"quest_progress",quest_todo:"quest_todo",quest1:"quest1",quest2:"quest2",quest3:"quest3",app_questNote:"app_questNote"};
 const LANG_META={en:{flag:'🇬🇧',name:'English'},id:{flag:'🇮🇩',name:'Indonesia'},pt:{flag:'🇧🇷',name:'Português (BR)'},zh:{flag:'🇨🇳',name:'中文'},ko:{flag:'🇰🇷',name:'한국어'}};
 function applyLang(l){
 document.documentElement.lang=l;
