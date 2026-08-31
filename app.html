@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOMO INK — App</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐙</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -74,7 +75,24 @@ nav a.active{background:var(--primary-gradient);color:#fff}
 .note{color:var(--on-surface-variant);font-size:14px;margin-top:10px;line-height:24px}
 .bar{height:6px;border-radius:var(--radius-full);background:var(--surface-container-high);overflow:hidden}
 .bar-fill{height:100%;border-radius:inherit;background:var(--primary-gradient);width:0%;transition:width .8s var(--ease)}
-footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-size:14px;border-top:2px dashed var(--outline-variant)}
+footer{border-top:2px dashed var(--outline-variant);padding:48px 0 24px}
+.footer-grid{display:grid;gap:32px;grid-template-columns:1fr}
+@media(min-width:760px){.footer-grid{grid-template-columns:2fr 1fr 1fr}}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.f-mark{width:36px;height:36px;border-radius:50%;background:var(--surface-container-high);border:2px dashed var(--outline-variant);display:flex;align-items:center;justify-content:center}
+.f-mark svg{width:24px;height:24px}
+.f-name{font-family:var(--font-head);font-weight:800;font-size:18px;color:var(--on-surface)}
+.f-name b{background:linear-gradient(90deg,#7c3aed,#5b21b6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.f-tag{color:var(--on-surface-variant);font-size:15px;max-width:320px}
+.socials{display:flex;gap:10px;margin-top:16px}
+.social{width:40px;height:40px;border-radius:50%;border:1px solid var(--outline-variant);display:flex;align-items:center;justify-content:center;font-size:17px;text-decoration:none;transition:all 200ms var(--ease)}
+.social:hover{background:var(--primary-gradient);border-color:transparent;transform:translateY(-2px)}
+.footer-col h4{font-family:var(--font-head);color:var(--primary);font-size:15px;font-weight:600;margin-bottom:12px}
+.footer-col a{display:block;color:var(--on-surface-variant);text-decoration:none;font-size:14px;padding:6px 0;transition:color 150ms var(--ease)}
+.footer-col a:hover{color:var(--primary)}
+.footer-bottom{margin-top:36px;padding-top:20px;border-top:1px dashed var(--outline-variant);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--on-surface-variant);font-size:13px}
+.footer-bottom a{color:var(--on-surface-variant);text-decoration:none}
+.footer-bottom a:hover{color:var(--primary)}
 </style>
 </head>
 <body>
@@ -112,6 +130,25 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 </div>
 </div></header>
 
+<svg width="0" height="0" style="position:absolute"><defs>
+<g id="krakenSvg">
+<path d="M26 74 C18 86 16 96 24 106" stroke="url(#krakenGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M42 82 C38 92 40 100 46 110" stroke="url(#krakenGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M78 82 C82 92 80 100 74 110" stroke="url(#krakenGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M94 74 C102 86 104 96 96 106" stroke="url(#krakenGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+<ellipse cx="60" cy="46" rx="33" ry="31" fill="url(#krakenGrad)"/>
+<circle cx="48" cy="44" r="8" fill="#ffffff"/><circle cx="50" cy="45" r="3.5" fill="#241a33"/>
+<circle cx="72" cy="44" r="8" fill="#ffffff"/><circle cx="70" cy="45" r="3.5" fill="#241a33"/>
+<circle cx="38" cy="57" r="4" fill="#ffeb5b" opacity="0.6"/>
+<circle cx="82" cy="57" r="4" fill="#ffeb5b" opacity="0.6"/>
+<path d="M53 58 Q60 65 67 58" stroke="#241a33" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<ellipse cx="45" cy="27" rx="9" ry="5" fill="#ffffff" opacity="0.35" transform="rotate(-25 45 27)"/>
+</g>
+<linearGradient id="krakenGrad" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#5b21b6"/>
+</linearGradient>
+</defs></svg>
+
 <section class="wrap dash">
 <div class="panel">
 <h2 data-i18n="app_passport">Ink Passport</h2>
@@ -137,17 +174,50 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 </div>
 </section>
 
-<footer><div class="wrap" data-i18n="footer">FOMO INK · Ocean GameFi on Ink L2</div></footer>
+<footer><div class="wrap">
+<div class="footer-grid">
+<div>
+<div class="footer-brand">
+<span class="f-mark"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#krakenSvg"/></svg></span>
+<span class="f-name">FOMO<b>INK</b></span>
+</div>
+<p class="f-tag" data-i18n="f_tag">Ocean GameFi on Ink L2 — quests, rewards, and an evolving Kraken Passport.</p>
+<div class="socials">
+<a class="social" href="#" aria-label="X (Twitter)" title="X">🐦</a>
+<a class="social" href="#" aria-label="Discord" title="Discord">💬</a>
+<a class="social" href="#" aria-label="Telegram" title="Telegram">✈️</a>
+<a class="social" href="#" aria-label="GitHub" title="GitHub">🐙</a>
+</div>
+</div>
+<div class="footer-col">
+<h4 data-i18n="f_product">Product</h4>
+<a href="app.html" data-i18n="app_passport">Ink Passport</a>
+<a href="app.html" data-i18n="app_quests">DeFi Quests</a>
+<a href="index.html#treasury" data-i18n="treasury">Treasury</a>
+</div>
+<div class="footer-col">
+<h4 data-i18n="f_community">Community</h4>
+<a href="#" data-i18n="f_docs">Docs</a>
+<a href="#" data-i18n="f_faq">FAQ</a>
+<a href="#" data-i18n="f_privacy">Privacy</a>
+<a href="#" data-i18n="f_terms">Terms</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span id="year">2026</span> FOMO INK · <span data-i18n="f_built">Built on Ink L2</span></span>
+<span>🐙 <span data-i18n="footer">Ocean GameFi on Ink L2</span></span>
+</div>
+</div></footer>
 
 <script>
 const I18N={
-en:{home:"Home",app:"App",treasury:"Treasury",connect:"Connect",app_passport:"Ink Passport",app_wallet:"Not connected",app_passportDesc:"Levels and Kraken badges appear here once your wallet is connected.",app_upload:"Upload Ocean Character (IPFS / NFT coming soon)",app_quests:"DeFi Quests",quest1:"Quest 1: Swap tokens on an Ink DEX",quest2:"Quest 2: Stake INKQ",quest3:"Quest 3: Bridge to Ink L2",app_questNote:"Real missions and action buttons arrive after wallet connection.",quest_todo:"To do",footer:"FOMO INK · Ocean GameFi on Ink L2"},
-id:{home:"Beranda",app:"App",treasury:"Treasury",connect:"Connect",app_passport:"Ink Passport",app_wallet:"Belum connect",app_passportDesc:"Level & badge kraken akan tampil di sini setelah wallet nyambung.",app_upload:"Upload Karakter Laut (IPFS / NFT menyusul)",app_quests:"DeFi Quests",quest1:"Quest 1: Swap token di Ink DEX",quest2:"Quest 2: Stake INKQ",quest3:"Quest 3: Bridge ke Ink L2",app_questNote:"Misi nyata + tombol jalankan menyusul setelah konek wallet.",quest_todo:"Belum",footer:"FOMO INK · Ocean GameFi on Ink L2"},
-pt:{home:"Início",app:"App",treasury:"Tesouraria",connect:"Conectar",app_passport:"Ink Passport",app_wallet:"Não conectado",app_passportDesc:"Níveis e emblemas kraken aparecem aqui após conectar a carteira.",app_upload:"Enviar Personagem Oceânico (IPFS / NFT em breve)",app_quests:"Quests DeFi",quest1:"Quest 1: Trocar tokens em um DEX Ink",quest2:"Quest 2: Stake de INKQ",quest3:"Quest 3: Bridge para Ink L2",app_questNote:"Missões reais e botões chegam após conectar a carteira.",quest_todo:"A fazer",footer:"FOMO INK · GameFi Oceânico na Ink L2"},
-zh:{home:"首页",app:"应用",treasury:"金库",connect:"连接",app_passport:"Ink Passport",app_wallet:"未连接",app_passportDesc:"连接钱包后，等级与 Kraken 徽章将显示于此。",app_upload:"上传海洋角色（IPFS / NFT 即将推出）",app_quests:"DeFi 任务",quest1:"任务 1：在 Ink DEX 兑换代币",quest2:"任务 2：质押 INKQ",quest3:"任务 3：跨链至 Ink L2",app_questNote:"真实任务与操作按钮将在连接钱包后上线。",quest_todo:"待办",footer:"FOMO INK · Ink L2 海洋 GameFi"},
-ko:{home:"홈",app:"앱",treasury:"트레저리",connect:"연결",app_passport:"Ink Passport",app_wallet:"연결 안 됨",app_passportDesc:"지갑 연결 후 레벨과 Kraken 배지가 표시됩니다.",app_upload:"해양 캐릭터 업로드 (IPFS / NFT 곧 출시)",app_quests:"DeFi 퀘스트",quest1:"퀘스트 1: Ink DEX에서 토큰 스왑",quest2:"퀘스트 2: INKQ 스테이크",quest3:"퀘스트 3: Ink L2로 브릿지",app_questNote:"실제 미션과 버튼은 지갑 연결 후 제공됩니다.",quest_todo:"할 일",footer:"FOMO INK · Ink L2 해양 GameFi"}
+en:{home:"Home",app:"App",treasury:"Treasury",connect:"Connect",app_passport:"Ink Passport",app_wallet:"Not connected",app_passportDesc:"Levels and Kraken badges appear here once your wallet is connected.",app_upload:"Upload Ocean Character (IPFS / NFT coming soon)",app_quests:"DeFi Quests",quest1:"Quest 1: Swap tokens on an Ink DEX",quest2:"Quest 2: Stake INKQ",quest3:"Quest 3: Bridge to Ink L2",app_questNote:"Real missions and action buttons arrive after wallet connection.",quest_todo:"To do",f_tag:"Ocean GameFi on Ink L2 — quests, rewards, and an evolving Kraken Passport.",f_product:"Product",f_community:"Community",f_docs:"Docs",f_faq:"FAQ",f_privacy:"Privacy",f_terms:"Terms",f_built:"Built on Ink L2",footer:"Ocean GameFi on Ink L2"},
+id:{home:"Beranda",app:"App",treasury:"Treasury",connect:"Connect",app_passport:"Ink Passport",app_wallet:"Belum connect",app_passportDesc:"Level & badge kraken akan tampil di sini setelah wallet nyambung.",app_upload:"Upload Karakter Laut (IPFS / NFT menyusul)",app_quests:"DeFi Quests",quest1:"Quest 1: Swap token di Ink DEX",quest2:"Quest 2: Stake INKQ",quest3:"Quest 3: Bridge ke Ink L2",app_questNote:"Misi nyata + tombol jalankan menyusul setelah konek wallet.",quest_todo:"Belum",f_tag:"Ocean GameFi di Ink L2 — quest, hadiah, dan Ink Passport kraken yang berevolusi.",f_product:"Produk",f_community:"Komunitas",f_docs:"Dokumen",f_faq:"FAQ",f_privacy:"Privasi",f_terms:"Syarat",f_built:"Dibangun di Ink L2",footer:"Ocean GameFi di Ink L2"},
+pt:{home:"Início",app:"App",treasury:"Tesouraria",connect:"Conectar",app_passport:"Ink Passport",app_wallet:"Não conectado",app_passportDesc:"Níveis e emblemas kraken aparecem aqui após conectar a carteira.",app_upload:"Enviar Personagem Oceânico (IPFS / NFT em breve)",app_quests:"Quests DeFi",quest1:"Quest 1: Trocar tokens em um DEX Ink",quest2:"Quest 2: Stake de INKQ",quest3:"Quest 3: Bridge para Ink L2",app_questNote:"Missões reais e botões chegam após conectar a carteira.",quest_todo:"A fazer",f_tag:"GameFi oceânico na Ink L2 — quests, recompensas e um Ink Passport kraken em evolução.",f_product:"Produto",f_community:"Comunidade",f_docs:"Docs",f_faq:"FAQ",f_privacy:"Privacidade",f_terms:"Termos",f_built:"Construído na Ink L2",footer:"GameFi Oceânico na Ink L2"},
+zh:{home:"首页",app:"应用",treasury:"金库",connect:"连接",app_passport:"Ink Passport",app_wallet:"未连接",app_passportDesc:"连接钱包后，等级与 Kraken 徽章将显示于此。",app_upload:"上传海洋角色（IPFS / NFT 即将推出）",app_quests:"DeFi 任务",quest1:"任务 1：在 Ink DEX 兑换代币",quest2:"任务 2：质押 INKQ",quest3:"任务 3：跨链至 Ink L2",app_questNote:"真实任务与操作按钮将在连接钱包后上线。",quest_todo:"待办",f_tag:"Ink L2 上的海洋 GameFi——任务、奖励与不断进化的 Kraken Passport。",f_product:"产品",f_community:"社区",f_docs:"文档",f_faq:"常见问题",f_privacy:"隐私",f_terms:"条款",f_built:"基于 Ink L2 构建",footer:"Ink L2 海洋 GameFi"},
+ko:{home:"홈",app:"앱",treasury:"트레저리",connect:"연결",app_passport:"Ink Passport",app_wallet:"연결 안 됨",app_passportDesc:"지갑 연결 후 레벨과 Kraken 배지가 표시됩니다.",app_upload:"해양 캐릭터 업로드 (IPFS / NFT 곧 출시)",app_quests:"DeFi 퀘스트",quest1:"퀘스트 1: Ink DEX에서 토큰 스왑",quest2:"퀘스트 2: INKQ 스테이크",quest3:"퀘스트 3: Ink L2로 브릿지",app_questNote:"실제 미션과 버튼은 지갑 연결 후 제공됩니다.",quest_todo:"할 일",f_tag:"Ink L2 해양 GameFi — 퀘스트, 보상, 그리고 진화하는 Kraken Passport.",f_product:"제품",f_community:"커뮤니티",f_docs:"문서",f_faq:"FAQ",f_privacy:"개인정보",f_terms:"약관",f_built:"Ink L2 기반",footer:"Ink L2 해양 GameFi"}
 };
-const KEYMAP={home:"home",app:"app",treasury:"treasury",connect:"connect",app_passport:"app_passport",app_wallet:"app_wallet",app_passportDesc:"app_passportDesc",app_upload:"app_upload",app_quests:"app_quests",quest1:"quest1",quest2:"quest2",quest3:"quest3",app_questNote:"app_questNote",quest_todo:"quest_todo",footer:"footer"};
+const KEYMAP=["home","app","treasury","connect","app_passport","app_wallet","app_passportDesc","app_upload","app_quests","quest1","quest2","quest3","app_questNote","quest_todo","f_tag","f_product","f_community","f_docs","f_faq","f_privacy","f_terms","f_built","footer"].reduce((m,k)=>(m[k]=k,m),{});
 const LANG_META={en:{flag:'🇬🇧',name:'English'},id:{flag:'🇮🇩',name:'Indonesia'},pt:{flag:'🇧🇷',name:'Português (BR)'},zh:{flag:'🇨🇳',name:'中文'},ko:{flag:'🇰🇷',name:'한국어'}};
 function applyLang(l){
 document.documentElement.lang=l;
@@ -159,6 +229,7 @@ document.querySelectorAll('.lang-item').forEach(it=>it.classList.toggle('active'
 try{localStorage.setItem('fomo-lang',l);}catch(e){}
 }
 (function(){const saved=(function(){try{return localStorage.getItem('fomo-lang');}catch(e){return null;}})()||'en';applyLang(saved);})();
+document.getElementById('year').textContent=new Date().getFullYear();
 const langWrap=document.getElementById('langWrap'),langBtn=document.getElementById('langBtn');
 langBtn.addEventListener('click',e=>{e.stopPropagation();langWrap.classList.toggle('open');langBtn.setAttribute('aria-expanded',langWrap.classList.contains('open'));});
 document.getElementById('langMenu').addEventListener('click',e=>{const it=e.target.closest('.lang-item');if(it){applyLang(it.dataset.lang);langWrap.classList.remove('open');langBtn.setAttribute('aria-expanded','false');}});
