@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOMO INK — GameFi x DeFi on Ink L2</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐙</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -62,7 +63,8 @@ nav a.active{background:var(--primary-gradient);color:#fff}
 /* HERO */
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .hero{text-align:center;padding:64px 0;position:relative;background:radial-gradient(circle at 50% 0%,rgba(124,58,237,0.16),transparent 60%)}
-.hero-mark{width:88px;height:88px;margin:0 auto 24px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;font-size:42px;background:var(--primary-gradient);box-shadow:0 6px 20px rgba(91,33,182,0.4);animation:floaty 6s ease-in-out infinite}
+.hero-mark{width:96px;height:96px;margin:0 auto 24px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;background:var(--surface-container-high);border:2px dashed var(--outline-variant);box-shadow:var(--shadow-sm);animation:floaty 6s ease-in-out infinite}
+.hero-mark svg{width:60px;height:60px}
 .tag{font-family:var(--font-mono);font-size:12px;letter-spacing:0.05em;color:var(--primary);text-transform:uppercase;display:inline-block;background:var(--secondary-container);border-radius:var(--radius-full);padding:6px 14px;margin-bottom:18px}
 .hero h1{font-family:var(--font-head);font-weight:800;font-size:clamp(38px,7vw,80px);line-height:1.05;letter-spacing:-0.04em;margin:0 0 18px}
 .hero h1 .accent{background:linear-gradient(90deg,#7c3aed,#5b21b6);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -86,14 +88,43 @@ nav a.active{background:var(--primary-gradient);color:#fff}
 .card-pct{font-family:var(--font-mono);font-weight:700;color:var(--primary)}
 .bar{height:6px;border-radius:var(--radius-full);background:var(--surface-container-high);overflow:hidden}
 .bar-fill{height:100%;border-radius:inherit;background:var(--primary-gradient);transition:width .8s var(--ease)}
+/* HOW IT WORKS */
+.how{padding:24px 0 64px}
+.how-head{text-align:center;margin-bottom:40px}
+.how-head h2{font-family:var(--font-head);color:var(--primary);font-weight:700;font-size:32px;line-height:40px;letter-spacing:-0.01em;margin-top:14px}
+.how-head p{color:var(--on-surface-variant);font-size:18px;margin-top:8px}
+.how-steps{position:relative;display:grid;gap:32px;grid-template-columns:1fr;max-width:960px;margin:0 auto}
+@media(min-width:760px){.how-steps{grid-template-columns:repeat(3,1fr)}.how-steps::before{content:"";position:absolute;top:28px;left:16%;right:16%;border-top:2px dashed var(--outline-variant);z-index:0}}
+.step{text-align:center}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--primary-gradient);color:var(--gold);font-family:var(--font-mono);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 14px rgba(91,33,182,0.3);position:relative;z-index:2}
+.step h3{font-family:var(--font-head);color:var(--primary);font-weight:600;font-size:20px;margin-bottom:8px}
+.step p{color:var(--on-surface-variant);font-size:15px;line-height:23px;max-width:260px;margin:0 auto}
 /* TREASURY + FEE */
-.treasury{background:var(--surface);border:1px solid var(--outline-variant);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-md);text-align:center;margin-bottom:24px;position:relative}
+.treasury{background:var(--surface);border:1px solid var(--outline-variant);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-md);text-align:center;margin-bottom:24px;position:relative;scroll-margin-top:96px}
 .treasury h2{font-family:var(--font-head);color:var(--primary);font-weight:700;font-size:32px;line-height:40px;letter-spacing:-0.01em;margin:14px 0 10px}
 .treasury p{color:var(--on-surface-variant);max-width:520px;margin:0 auto;font-size:18px}
 .badge-pri{position:static;display:inline-flex;background:var(--gold);color:var(--primary-strong);font-family:var(--font-mono);font-size:12px;letter-spacing:0.05em;text-transform:uppercase;border-radius:var(--radius-full);padding:6px 14px;font-weight:700}
 .fee{display:flex;gap:10px;align-items:flex-start;background:var(--surface-container);border:1px solid var(--outline-variant);border-radius:var(--radius-lg);padding:16px 18px;color:var(--on-surface-variant);font-size:16px;margin-bottom:64px;line-height:24px}
 .fee b{color:var(--primary)}
-footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-size:14px;border-top:2px dashed var(--outline-variant)}
+/* FOOTER */
+footer{border-top:2px dashed var(--outline-variant);padding:48px 0 24px;margin-top:8px}
+.footer-grid{display:grid;gap:32px;grid-template-columns:1fr}
+@media(min-width:760px){.footer-grid{grid-template-columns:2fr 1fr 1fr}}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.f-mark{width:36px;height:36px;border-radius:50%;background:var(--surface-container-high);border:2px dashed var(--outline-variant);display:flex;align-items:center;justify-content:center}
+.f-mark svg{width:24px;height:24px}
+.f-name{font-family:var(--font-head);font-weight:800;font-size:18px;color:var(--on-surface)}
+.f-name b{background:linear-gradient(90deg,#7c3aed,#5b21b6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.f-tag{color:var(--on-surface-variant);font-size:15px;max-width:320px}
+.socials{display:flex;gap:10px;margin-top:16px}
+.social{width:40px;height:40px;border-radius:50%;border:1px solid var(--outline-variant);display:flex;align-items:center;justify-content:center;font-size:17px;text-decoration:none;transition:all 200ms var(--ease)}
+.social:hover{background:var(--primary-gradient);border-color:transparent;transform:translateY(-2px)}
+.footer-col h4{font-family:var(--font-head);color:var(--primary);font-size:15px;font-weight:600;margin-bottom:12px}
+.footer-col a{display:block;color:var(--on-surface-variant);text-decoration:none;font-size:14px;padding:6px 0;transition:color 150ms var(--ease)}
+.footer-col a:hover{color:var(--primary)}
+.footer-bottom{margin-top:36px;padding-top:20px;border-top:1px dashed var(--outline-variant);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--on-surface-variant);font-size:13px}
+.footer-bottom a{color:var(--on-surface-variant);text-decoration:none}
+.footer-bottom a:hover{color:var(--primary)}
 </style>
 </head>
 <body>
@@ -131,59 +162,126 @@ footer{text-align:center;color:var(--on-surface-variant);padding:40px 0;font-siz
 </div>
 </div></header>
 
+<!-- ===== KRAKEN SVG ( reusable ) ===== -->
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="krakenGrad" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#5b21b6"/>
+</linearGradient>
+<g id="krakenSvg">
+<path d="M26 74 C18 86 16 96 24 106" stroke="url(#krakenGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M42 82 C38 92 40 100 46 110" stroke="url(#krakenGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M78 82 C82 92 80 100 74 110" stroke="url(#krakenGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M94 74 C102 86 104 96 96 106" stroke="url(#krakenGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
+<ellipse cx="60" cy="46" rx="33" ry="31" fill="url(#krakenGrad)"/>
+<circle cx="48" cy="44" r="8" fill="#ffffff"/><circle cx="50" cy="45" r="3.5" fill="#241a33"/>
+<circle cx="72" cy="44" r="8" fill="#ffffff"/><circle cx="70" cy="45" r="3.5" fill="#241a33"/>
+<circle cx="3 8" cy="57" r="4" fill="#ffeb5b" opacity="0.6"/>
+<circle cx="82" cy="57" r="4" fill="#ffeb5b" opacity="0.6"/>
+<path d="M53 58 Q60 65 67 58" stroke="#241a33" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<ellipse cx="45" cy="27" rx="9" ry="5" fill="#ffffff" opacity="0.35" transform="rotate(-25 45 27)"/>
+</g>
+</defs></svg>
+
 <section class="hero"><div class="wrap">
-<div class="hero-mark">🐙</div>
+<div class="hero-mark"><svg viewBox="0 0 120 120" role="img" aria-label="FOMO INK Kraken"><use href="#krakenSvg"/></svg></div>
 <div class="tag" data-i18n="hero.tag">Built on Ink L2 · Optimism Superchain</div>
 <h1><span data-i18n="hero.title1">Don't FOMO.</span><br><span class="accent" data-i18n="hero.title2">Conquer the Ink Ocean.</span></h1>
 <p data-i18n="hero.desc">GameFi × DeFi on Ink L2. Complete on-chain missions, earn points, and forge an evolving Kraken Ink Passport.</p>
 <a class="btn" href="app.html" data-i18n="hero.cta">Start the Journey</a>
 </div></section>
 
+<section class="wrap how">
+<div class="how-head">
+<div class="tag" data-i18n="how_tag">How it works</div>
+<h2 data-i18n="how_title">Three Steps to Rule the Ink Ocean</h2>
+<p data-i18n="how_sub">From an empty wallet to a Kraken captain — here's the path.</p>
+</div>
+<div class="how-steps">
+<div class="step"><div class="step-num">01</div><h3 data-i18n="s1_title">Connect your wallet</h3><p data-i18n="s1_desc">Hook up MetaMask, Coinbase Wallet, or any EVM wallet to enter the ocean.</p></div>
+<div class="step"><div class="step-num">02</div><h3 data-i18n="s2_title">Complete DeFi quests</h3><p data-i18n="s2_desc">Swap, stake, and bridge across Ink L2 — every action earns Quest Points.</p></div>
+<div class="step"><div class="step-num">03</div><h3 data-i18n="s3_title">Evolve your Kraken</h3><p data-i18n="s3_desc">Level up your Ink Passport NFT and claim treasure from the treasury.</p></div>
+</div>
+</section>
+
 <section class="wrap">
 <div class="grid">
 <div class="card">
 <span class="badge badge-new" data-i18n="card1_badge">NEW</span>
 <span class="ico">🎨</span>
-<h3 data-i18n="card1.title">Custom Avatar</h3>
-<p data-i18n="card1.desc">Upload your own image → become a Kraken NFT character stored on IPFS.</p>
+<h3 data-i18n="card1_title">Custom Avatar</h3>
+<p data-i18n="card1_desc">Upload your own image → become a Kraken NFT character stored on IPFS.</p>
 <div class="card-foot"><div class="card-foot-row"><span data-i18n="card1_foot">Minted on IPFS</span><span class="card-pct">32%</span></div><div class="bar"><div class="bar-fill" style="width:32%"></div></div></div>
 </div>
 <div class="card">
 <span class="badge badge-pop" data-i18n="card2_badge">POPULAR</span>
 <span class="ico">🐙</span>
-<h3 data-i18n="card2.title">Ink Passport</h3>
-<p data-i18n="card2.desc">A dynamic NFT that evolves visually with every quest you complete.</p>
+<h3 data-i18n="card2_title">Ink Passport</h3>
+<p data-i18n="card2_desc">A dynamic NFT that evolves visually with every quest you complete.</p>
 <div class="card-foot"><div class="card-foot-row"><span data-i18n="card2_foot">Avg Passport Lv.7</span><span class="card-pct">70%</span></div><div class="bar"><div class="bar-fill" style="width:70%"></div></div></div>
 </div>
 <div class="card">
 <span class="badge badge-soon" data-i18n="card3_badge">SOON</span>
 <span class="ico">⚔️</span>
-<h3 data-i18n="card3.title">DeFi Quests</h3>
-<p data-i18n="card3.desc">Swap, stake, and bridge missions across the Ink L2 ocean.</p>
+<h3 data-i18n="card3_title">DeFi Quests</h3>
+<p data-i18n="card3_desc">Swap, stake, and bridge missions across the Ink L2 ocean.</p>
 <div class="card-foot"><div class="card-foot-row"><span data-i18n="card3_foot">12 quests live</span><span class="card-pct">60%</span></div><div class="bar"><div class="bar-fill" style="width:60%"></div></div></div>
 </div>
 </div>
 
 <div class="treasury" id="treasury">
-<span class="badge-pri" data-i18n="badge.reward">REWARD POOL</span>
-<h2 data-i18n="treasury.title">A Treasury Worth Diving For</h2>
-<p data-i18n="treasury.desc">Deep-ocean reward pool. Your points become on-chain treasure.</p>
+<span class="badge-pri" data-i18n="badge_reward">REWARD POOL</span>
+<h2 data-i18n="treasury_title">A Treasury Worth Diving For</h2>
+<p data-i18n="treasury_desc">Deep-ocean reward pool. Your points become on-chain treasure.</p>
 </div>
 
 <div class="fee" data-i18n-html="fee"><b>Transparency:</b> Every on-chain action carries a ~$0.02 Protocol Fee ("Quest Energy"), shown clearly before you approve.</div>
 </div>
 
-<footer><div class="wrap" data-i18n="footer">FOMO INK · Ocean GameFi on Ink L2</div></footer>
+<footer><div class="wrap">
+<div class="footer-grid">
+<div>
+<div class="footer-brand">
+<span class="f-mark"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#krakenSvg"/></svg></span>
+<span class="f-name">FOMO<b>INK</b></span>
+</div>
+<p class="f-tag" data-i18n="f_tag">Ocean GameFi on Ink L2 — quests, rewards, and an evolving Kraken Passport.</p>
+<div class="socials">
+<a class="social" href="#" aria-label="X (Twitter)" title="X">🐦</a>
+<a class="social" href="#" aria-label="Discord" title="Discord">💬</a>
+<a class="social" href="#" aria-label="Telegram" title="Telegram">✈️</a>
+<a class="social" href="#" aria-label="GitHub" title="GitHub">🐙</a>
+</div>
+</div>
+<div class="footer-col">
+<h4 data-i18n="f_product">Product</h4>
+<a href="app.html" data-i18n="app">App</a>
+<a href="index.html#treasury" data-i18n="treasury">Treasury</a>
+<a href="app.html" data-i18n="card2_title">Ink Passport</a>
+<a href="app.html" data-i18n="card3_title">DeFi Quests</a>
+</div>
+<div class="footer-col">
+<h4 data-i18n="f_community">Community</h4>
+<a href="#" data-i18n="f_docs">Docs</a>
+<a href="#" data-i18n="f_faq">FAQ</a>
+<a href="#" data-i18n="f_privacy">Privacy</a>
+<a href="#" data-i18n="f_terms">Terms</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span id="year">2026</span> FOMO INK · <span data-i18n="f_built">Built on Ink L2</span></span>
+<span>🐙 <span data-i18n="footer">Ocean GameFi on Ink L2</span></span>
+</div>
+</div></footer>
 
 <script>
 const I18N={
-en:{home:"Home",app:"App",treasury:"Treasury",connect:"Connect",hero_tag:"Built on Ink L2 · Optimism Superchain",hero_title1:"Don't FOMO.",hero_title2:"Conquer the Ink Ocean.",hero_desc:"GameFi × DeFi on Ink L2. Complete on-chain missions, earn points, and forge an evolving Kraken Ink Passport.",hero_cta:"Start the Journey",card1_title:"Custom Avatar",card1_desc:"Upload your own image → become a Kraken NFT character stored on IPFS.",card1_badge:"NEW",card1_foot:"Minted on IPFS",card2_title:"Ink Passport",card2_desc:"A dynamic NFT that evolves visually with every quest you complete.",card2_badge:"POPULAR",card2_foot:"Avg Passport Lv.7",card3_title:"DeFi Quests",card3_desc:"Swap, stake, and bridge missions across the Ink L2 ocean.",card3_badge:"SOON",card3_foot:"12 quests live",treasury_title:"A Treasury Worth Diving For",treasury_desc:"Deep-ocean reward pool. Your points become on-chain treasure.",fee:"<b>Transparency:</b> Every on-chain action carries a ~$0.02 Protocol Fee (\"Quest Energy\"), shown clearly before you approve.",footer:"FOMO INK · Ocean GameFi on Ink L2",badge_new:"NEW",badge_reward:"REWARD POOL"},
-id:{home:"Beranda",app:"App",treasury:"Treasury",connect:"Connect",hero_tag:"Dibangun di Ink L2 · Optimism Superchain",hero_title1:"Jangan FOMO.",hero_title2:"Taklukkan Lautan Ink.",hero_desc:"GameFi × DeFi di Ink L2. Selesaikan misi on-chain, kumpulkan poin, dan bentuk Ink Passport kraken yang berevolusi.",hero_cta:"Mulai Petualangan",card1_title:"Custom Avatar",card1_desc:"Upload gambar sendiri → jadi karakter kraken NFT milikmu di IPFS.",card1_badge:"BARU",card1_foot:"Di-mint ke IPFS",card2_title:"Ink Passport",card2_desc:"NFT dinamis yang berubah visual tiap quest selesai.",card2_badge:"POPULER",card2_foot:"Rata-rata Passport Lv.7",card3_title:"DeFi Quests",card3_desc:"Misi swap, stake, bridge di lautan Ink L2.",card3_badge:"SEGERA",card3_foot:"12 quest aktif",treasury_title:"Treasury yang Menyenangkan",treasury_desc:"Reward pool laut dalam. Poinmu berubah jadi harta karun on-chain.",fee:"<b>Transparansi:</b> Setiap aksi on-chain dikenakan Protocol Fee ~$0,02 (\"Quest Energy\"), ditampilkan jelas sebelum disetujui.",footer:"FOMO INK · Ocean GameFi on Ink L2",badge_new:"BARU",badge_reward:"POOL HADIAH"},
-pt:{home:"Início",app:"App",treasury:"Tesouraria",connect:"Conectar",hero_tag:"Construído na Ink L2 · Optimism Superchain",hero_title1:"Não dê FOMO.",hero_title2:"Conquiste o Oceano Ink.",hero_desc:"GameFi × DeFi na Ink L2. Complete missões on-chain, acumule pontos e forje um Ink Passport kraken em evolução.",hero_cta:"Começar a Jornada",card1_title:"Avatar Personalizado",card1_desc:"Envie sua imagem → vire um personagem kraken NFT no IPFS.",card1_badge:"NOVO",card1_foot:"Cunhado no IPFS",card2_title:"Ink Passport",card2_desc:"Um NFT dinâmico que evolui visualmente a cada quest.",card2_badge:"POPULAR",card2_foot:"Passport médio Lv.7",card3_title:"Quests DeFi",card3_desc:"Missões de swap, stake e bridge no oceano Ink L2.",card3_badge:"EM BREVE",card3_foot:"12 quests ativas",treasury_title:"Uma Tesouraria para Mergulhar",treasury_desc:"Pool de recompensas das profundezas. Seus pontos viram tesouro on-chain.",fee:"<b>Transparência:</b> Cada ação on-chain tem uma Taxa de Protocolo de ~$0,02 (\"Quest Energy\"), exibida antes de aprovar.",footer:"FOMO INK · GameFi Oceânico na Ink L2",badge_new:"NOVO",badge_reward:"POOL DE PRÊMIOS"},
-zh:{home:"首页",app:"应用",treasury:"金库",connect:"连接",hero_tag:"构建于 Ink L2 · Optimism Superchain",hero_title1:"别再 FOMO。",hero_title2:"征服 Ink 海洋。",hero_desc:"Ink L2 上的 GameFi × DeFi。完成链上任务、累积积分，锻造不断进化的 Kraken Ink Passport。",hero_cta:"开启旅程",card1_title:"自定义头像",card1_desc:"上传你的图片 → 成为存储在 IPFS 上的 Kraken NFT 角色。",card1_badge:"新",card1_foot:"已铸造至 IPFS",card2_title:"Ink Passport",card2_desc:"随每次任务完成的视觉进化动态 NFT。",card2_badge:"热门",card2_foot:"平均 Passport Lv.7",card3_title:"DeFi 任务",card3_desc:"在 Ink L2 海洋中 Swap、Stake 与 Bridge。",card3_badge:"即将",card3_foot:"12 个任务进行中",treasury_title:"值得探索的金库",treasury_desc:"深海奖励池。你的积分化为链上宝藏。",fee:"<b>透明机制：</b>每笔链上操作收取约 $0.02 协议费（“Quest Energy”），在确认前清晰显示。",footer:"FOMO INK · Ink L2 海洋 GameFi",badge_new:"新",badge_reward:"奖励池"},
-ko:{home:"홈",app:"앱",treasury:"트레저리",connect:"연결",hero_tag:"Ink L2 기반 · Optimism Superchain",hero_title1:"FOMO에 빠지지 마세요.",hero_title2:"Ink 바다를 정복하세요.",hero_desc:"Ink L2 기반 GameFi × DeFi. 온체인 미션을 완료하고 포인트를 모아 진화하는 Kraken Ink Passport를 만드세요.",hero_cta:"여정 시작하기",card1_title:"커스텀 아바타",card1_desc:"이미지를 업로드하세요 → IPFS에 저장되는 Kraken NFT 캐릭터가 됩니다.",card1_badge:"신규",card1_foot:"IPFS에 민팅됨",card2_title:"Ink Passport",card2_desc:"퀘스트를 완료할 때마다 시각적으로 진화하는 다이내믹 NFT.",card2_badge:"인기",card2_foot:"평균 Passport Lv.7",card3_title:"DeFi 퀘스트",card3_desc:"Ink L2 바다에서 스왑, 스테이크, 브릿지 미션.",card3_badge:"곧",card3_foot:"12개 퀘스트 진행중",treasury_title:"놓칠 수 없는 트레저리",treasury_desc:"심해 보상 풀. 포인트가 온체인 보물이 됩니다.",fee:"<b>투명성:</b> 모든 온체인 작업에는 약 $0.02의 프로토콜 수수료(\"Quest Energy\")가 부과되며 승인 전에 명확히 표시됩니다.",footer:"FOMO INK · Ink L2 해양 GameFi",badge_new:"신규",badge_reward:"보상 풀"}
+en:{home:"Home",app:"App",treasury:"Treasury",connect:"Connect",hero_tag:"Built on Ink L2 · Optimism Superchain",hero_title1:"Don't FOMO.",hero_title2:"Conquer the Ink Ocean.",hero_desc:"GameFi × DeFi on Ink L2. Complete on-chain missions, earn points, and forge an evolving Kraken Ink Passport.",hero_cta:"Start the Journey",card1_title:"Custom Avatar",card1_desc:"Upload your own image → become a Kraken NFT character stored on IPFS.",card1_badge:"NEW",card1_foot:"Minted on IPFS",card2_title:"Ink Passport",card2_desc:"A dynamic NFT that evolves visually with every quest you complete.",card2_badge:"POPULAR",card2_foot:"Avg Passport Lv.7",card3_title:"DeFi Quests",card3_desc:"Swap, stake, and bridge missions across the Ink L2 ocean.",card3_badge:"SOON",card3_foot:"12 quests live",treasury_title:"A Treasury Worth Diving For",treasury_desc:"Deep-ocean reward pool. Your points become on-chain treasure.",badge_reward:"REWARD POOL",fee:"<b>Transparency:</b> Every on-chain action carries a ~$0.02 Protocol Fee (\"Quest Energy\"), shown clearly before you approve.",how_tag:"How it works",how_title:"Three Steps to Rule the Ink Ocean",how_sub:"From an empty wallet to a Kraken captain — here's the path.",s1_title:"Connect your wallet",s1_desc:"Hook up MetaMask, Coinbase Wallet, or any EVM wallet to enter the ocean.",s2_title:"Complete DeFi quests",s2_desc:"Swap, stake, and bridge across Ink L2 — every action earns Quest Points.",s3_title:"Evolve your Kraken",s3_desc:"Level up your Ink Passport NFT and claim treasure from the treasury.",f_tag:"Ocean GameFi on Ink L2 — quests, rewards, and an evolving Kraken Passport.",f_product:"Product",f_community:"Community",f_docs:"Docs",f_faq:"FAQ",f_privacy:"Privacy",f_terms:"Terms",f_built:"Built on Ink L2",footer:"Ocean GameFi on Ink L2"},
+id:{home:"Beranda",app:"App",treasury:"Treasury",connect:"Connect",hero_tag:"Dibangun di Ink L2 · Optimism Superchain",hero_title1:"Jangan FOMO.",hero_title2:"Taklukkan Lautan Ink.",hero_desc:"GameFi × DeFi di Ink L2. Selesaikan misi on-chain, kumpulkan poin, dan bentuk Ink Passport kraken yang berevolusi.",hero_cta:"Mulai Petualangan",card1_title:"Custom Avatar",card1_desc:"Upload gambar sendiri → jadi karakter kraken NFT milikmu di IPFS.",card1_badge:"BARU",card1_foot:"Di-mint ke IPFS",card2_title:"Ink Passport",card2_desc:"NFT dinamis yang berubah visual tiap quest selesai.",card2_badge:"POPULER",card2_foot:"Rata-rata Passport Lv.7",card3_title:"DeFi Quests",card3_desc:"Misi swap, stake, bridge di lautan Ink L2.",card3_badge:"SEGERA",card3_foot:"12 quest aktif",treasury_title:"Treasury yang Menyenangkan",treasury_desc:"Reward pool laut dalam. Poinmu berubah jadi harta karun on-chain.",badge_reward:"POOL HADIAH",fee:"<b>Transparansi:</b> Setiap aksi on-chain dikenakan Protocol Fee ~$0,02 (\"Quest Energy\"), ditampilkan jelas sebelum disetujui.",how_tag:"Cara kerja",how_title:"Tiga Langkah Menaklukkan Lautan Ink",how_sub:"Dari wallet kosong menjadi kapten kraken — begini jalannya.",s1_title:"Hubungkan wallet",s1_desc:"Sambungkan MetaMask, Coinbase Wallet, atau wallet EVM apa pun untuk masuk ke lautan.",s2_title:"Selesaikan quest DeFi",s2_desc:"Swap, stake, dan bridge di Ink L2 — setiap aksi menghasilkan Quest Points.",s3_title:"Evolusikan krankenmu",s3_desc:"Naikkan level Ink Passport NFT dan klaim harta karun dari treasury.",f_tag:"Ocean GameFi di Ink L2 — quest, hadiah, dan Ink Passport kraken yang berevolusi.",f_product:"Produk",f_community:"Komunitas",f_docs:"Dokumen",f_faq:"FAQ",f_privacy:"Privasi",f_terms:"Syarat",f_built:"Dibangun di Ink L2",footer:"Ocean GameFi di Ink L2"},
+pt:{home:"Início",app:"App",treasury:"Tesouraria",connect:"Conectar",hero_tag:"Construído na Ink L2 · Optimism Superchain",hero_title1:"Não dê FOMO.",hero_title2:"Conquiste o Oceano Ink.",hero_desc:"GameFi × DeFi na Ink L2. Complete missões on-chain, acumule pontos e forje um Ink Passport kraken em evolução.",hero_cta:"Começar a Jornada",card1_title:"Avatar Personalizado",card1_desc:"Envie sua imagem → vire um personagem kraken NFT no IPFS.",card1_badge:"NOVO",card1_foot:"Cunhado no IPFS",card2_title:"Ink Passport",card2_desc:"Um NFT dinâmico que evolui visualmente a cada quest.",card2_badge:"POPULAR",card2_foot:"Passport médio Lv.7",card3_title:"Quests DeFi",card3_desc:"Missões de swap, stake e bridge no oceano Ink L2.",card3_badge:"EM BREVE",card3_foot:"12 quests ativas",treasury_title:"Uma Tesouraria para Mergulhar",treasury_desc:"Pool de recompensas das profundezas. Seus pontos viram tesouro on-chain.",badge_reward:"POOL DE PRÊMIOS",fee:"<b>Transparência:</b> Cada ação on-chain tem uma Taxa de Protocolo de ~$0,02 (\"Quest Energy\"), exibida antes de aprovar.",how_tag:"Como funciona",how_title:"Três Passos para Dominar o Oceano Ink",how_sub:"De carteira vazia a capitão kraken — o caminho é este.",s1_title:"Conecte sua carteira",s1_desc:"Conecte MetaMask, Coinbase Wallet ou qualquer carteira EVM para entrar no oceano.",s2_title:"Complete quests DeFi",s2_desc:"Swap, stake e bridge na Ink L2 — cada ação rende Quest Points.",s3_title:"Evolua seu Kraken",s3_desc:"Suba de nível no Ink Passport NFT e resgate tesouros da tesouraria.",f_tag:"GameFi oceânico na Ink L2 — quests, recompensas e um Ink Passport kraken em evolução.",f_product:"Produto",f_community:"Comunidade",f_docs:"Docs",f_faq:"FAQ",f_privacy:"Privacidade",f_terms:"Termos",f_built:"Construído na Ink L2",footer:"GameFi Oceânico na Ink L2"},
+zh:{home:"首页",app:"应用",treasury:"金库",connect:"连接",hero_tag:"构建于 Ink L2 · Optimism Superchain",hero_title1:"别再 FOMO。",hero_title2:"征服 Ink 海洋。",hero_desc:"Ink L2 上的 GameFi × DeFi。完成链上任务、累积积分，锻造不断进化的 Kraken Ink Passport。",hero_cta:"开启旅程",card1_title:"自定义头像",card1_desc:"上传你的图片 → 成为存储在 IPFS 上的 Kraken NFT 角色。",card1_badge:"新",card1_foot:"已铸造至 IPFS",card2_title:"Ink Passport",card2_desc:"随每次任务完成的视觉进化动态 NFT。",card2_badge:"热门",card2_foot:"平均 Passport Lv.7",card3_title:"DeFi 任务",card3_desc:"在 Ink L2 海洋中 Swap、Stake 与 Bridge。",card3_badge:"即将",card3_foot:"12 个任务进行中",treasury_title:"值得探索的金库",treasury_desc:"深海奖励池。你的积分化为链上宝藏。",badge_reward:"奖励池",fee:"<b>透明机制：</b>每笔链上操作收取约 $0.02 协议费（“Quest Energy”），在确认前清晰显示。",how_tag:"玩法说明",how_title:"三步征服 Ink 海洋",how_sub:"从空钱包到 Kraken 舰长，旅程由此展开。",s1_title:"连接钱包",s1_desc:"连接 MetaMask、Coinbase Wallet 或任意 EVM 钱包，潜入海洋。",s2_title:"完成 DeFi 任务",s2_desc:"在 Ink L2 上 Swap、Stake 与 Bridge——每次操作都能获得任务积分。",s3_title:"进化你的 Kraken",s3_desc:"升级 Ink Passport NFT，并从金库领取宝藏。",f_tag:"Ink L2 上的海洋 GameFi——任务、奖励与不断进化的 Kraken Passport。",f_product:"产品",f_community:"社区",f_docs:"文档",f_faq:"常见问题",f_privacy:"隐私",f_terms:"条款",f_built:"基于 Ink L2 构建",footer:"Ink L2 海洋 GameFi"},
+ko:{home:"홈",app:"앱",treasury:"트레저리",connect:"연결",hero_tag:"Ink L2 기반 · Optimism Superchain",hero_title1:"FOMO에 빠지지 마세요.",hero_title2:"Ink 바다를 정복하세요.",hero_desc:"Ink L2 기반 GameFi × DeFi. 온체인 미션을 완료하고 포인트를 모아 진화하는 Kraken Ink Passport를 만드세요.",hero_cta:"여정 시작하기",card1_title:"커스텀 아바타",card1_desc:"이미지를 업로드하세요 → IPFS에 저장되는 Kraken NFT 캐릭터가 됩니다.",card1_badge:"신규",card1_foot:"IPFS에 민팅됨",card2_title:"Ink Passport",card2_desc:"퀘스트를 완료할 때마다 시각적으로 진화하는 다이내믹 NFT.",card2_badge:"인기",card2_foot:"평균 Passport Lv.7",card3_title:"DeFi 퀘스트",card3_desc:"Ink L2 바다에서 스왑, 스테이크, 브릿지 미션.",card3_badge:"곧",card3_foot:"12개 퀘스트 진행중",treasury_title:"놓칠 수 없는 트레저리",treasury_desc:"심해 보상 풀. 포인트가 온체인 보물이 됩니다.",badge_reward:"보상 풀",fee:"<b>투명성:</b> 모든 온체인 작업에는 약 $0.02의 프로토콜 수수료(\"Quest Energy\")가 부과되며 승인 전에 명확히 표시됩니다.",how_tag:"이용 방법",how_title:"3단계로 Ink 바다 정복",how_sub:"빈 지갑에서 Kraken 선장까지 — 여정이 시작됩니다.",s1_title:"지갑 연결",s1_desc:"MetaMask, Coinbase Wallet 등 아무 EVM 지갑을 연결해 바다에 입장하세요.",s2_title:"DeFi 퀘스트 완료",s2_desc:"Ink L2에서 스왑, 스테이크, 브릿지 — 모든 행동이 퀘스트 포인트를 얻습니다.",s3_title:"Kraken 진화시키기",s3_desc:"Ink Passport NFT 레벨을 올리고 트레저리에서 보물을 받으세요.",f_tag:"Ink L2 해양 GameFi — 퀘스트, 보상, 그리고 진화하는 Kraken Passport.",f_product:"제품",f_community:"커뮤니티",f_docs:"문서",f_faq:"FAQ",f_privacy:"개인정보",f_terms:"약관",f_built:"Ink L2 기반",footer:"Ink L2 해양 GameFi"}
 };
-const KEYMAP={home:"home",app:"app",treasury:"treasury",connect:"connect",hero_tag:"hero_tag",hero_title1:"hero_title1",hero_title2:"hero_title2",hero_desc:"hero_desc",hero_cta:"hero_cta",card1_title:"card1_title",card1_desc:"card1_desc",card1_badge:"card1_badge",card1_foot:"card1_foot",card2_title:"card2_title",card2_desc:"card2_desc",card2_badge:"card2_badge",card2_foot:"card2_foot",card3_title:"card3_title",card3_desc:"card3_desc",card3_badge:"card3_badge",card3_foot:"card3_foot",treasury_title:"treasury_title",treasury_desc:"treasury_desc",fee:"fee",footer:"footer",badge_new:"badge_new",badge_reward:"badge_reward",app_passport:"app_passport",app_wallet:"app_wallet",app_passportDesc:"app_passportDesc",app_upload:"app_upload",app_quests:"app_quests",quest_progress:"quest_progress",quest_todo:"quest_todo",quest1:"quest1",quest2:"quest2",quest3:"quest3",app_questNote:"app_questNote"};
+const KEYMAP=["home","app","treasury","connect","hero_tag","hero_title1","hero_title2","hero_desc","hero_cta","card1_title","card1_desc","card1_badge","card1_foot","card2_title","card2_desc","card2_badge","card2_foot","card3_title","card3_desc","card3_badge","card3_foot","treasury_title","treasury_desc","badge_reward","fee","how_tag","how_title","how_sub","s1_title","s1_desc","s2_title","s2_desc","s3_title","s3_desc","f_tag","f_product","f_community","f_docs","f_faq","f_privacy","f_terms","f_built","footer"].reduce((m,k)=>(m[k]=k,m),{});
 const LANG_META={en:{flag:'🇬🇧',name:'English'},id:{flag:'🇮🇩',name:'Indonesia'},pt:{flag:'🇧🇷',name:'Português (BR)'},zh:{flag:'🇨🇳',name:'中文'},ko:{flag:'🇰🇷',name:'한국어'}};
 function applyLang(l){
 document.documentElement.lang=l;
@@ -196,6 +294,7 @@ document.querySelectorAll('.lang-item').forEach(it=>it.classList.toggle('active'
 try{localStorage.setItem('fomo-lang',l);}catch(e){}
 }
 (function(){const saved=(function(){try{return localStorage.getItem('fomo-lang');}catch(e){return null;}})()||'en';applyLang(saved);})();
+document.getElementById('year').textContent=new Date().getFullYear();
 const langWrap=document.getElementById('langWrap'),langBtn=document.getElementById('langBtn');
 langBtn.addEventListener('click',e=>{e.stopPropagation();langWrap.classList.toggle('open');langBtn.setAttribute('aria-expanded',langWrap.classList.contains('open'));});
 document.getElementById('langMenu').addEventListener('click',e=>{const it=e.target.closest('.lang-item');if(it){applyLang(it.dataset.lang);langWrap.classList.remove('open');langBtn.setAttribute('aria-expanded','false');}});
